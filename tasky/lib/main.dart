@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'screens/HomeScreen.dart';
+import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +14,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My App',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const HomeScreen(), // ← using screen from /screens folder
+      title: 'Tasky App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: "Inter",
+      ),
+
+      // First screen shown on launch
+      home: const LoginScreen(),
+
+      // Named routes
+      routes: {
+        "/login": (context) => const LoginScreen(),
+        "/signup": (context) => const SignupScreen(),
+        "/home": (context) => const HomeScreen(),
+      },
     );
   }
 }
